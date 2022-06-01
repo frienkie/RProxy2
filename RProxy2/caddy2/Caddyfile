@@ -306,4 +306,12 @@ tls_insecure_skip_verify
 }
 }
 
-
+*.wikipedia.org {
+tls cert.crt cert.key
+reverse_proxy https://www.wikipedia.org    {
+header_up Host {host} 
+transport http { 
+tls_insecure_skip_verify 
+} 
+}
+}
